@@ -69,47 +69,39 @@ include CMakeFiles/test_config.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/test_config.dir/flags.make
 
-CMakeFiles/test_config.dir/tests/test_config.cpp.o: CMakeFiles/test_config.dir/flags.make
-CMakeFiles/test_config.dir/tests/test_config.cpp.o: /home/dich/ddfg/tests/test_config.cpp
-CMakeFiles/test_config.dir/tests/test_config.cpp.o: CMakeFiles/test_config.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_config.dir/tests/test_config.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_config.dir/tests/test_config.cpp.o -MF CMakeFiles/test_config.dir/tests/test_config.cpp.o.d -o CMakeFiles/test_config.dir/tests/test_config.cpp.o -c /home/dich/ddfg/tests/test_config.cpp
+CMakeFiles/test_config.dir/test/test_config.cpp.o: CMakeFiles/test_config.dir/flags.make
+CMakeFiles/test_config.dir/test/test_config.cpp.o: /home/dich/ddfg/test/test_config.cpp
+CMakeFiles/test_config.dir/test/test_config.cpp.o: CMakeFiles/test_config.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_config.dir/test/test_config.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_config.dir/test/test_config.cpp.o -MF CMakeFiles/test_config.dir/test/test_config.cpp.o.d -o CMakeFiles/test_config.dir/test/test_config.cpp.o -c /home/dich/ddfg/test/test_config.cpp
 
-CMakeFiles/test_config.dir/tests/test_config.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_config.dir/tests/test_config.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/tests/test_config.cpp > CMakeFiles/test_config.dir/tests/test_config.cpp.i
+CMakeFiles/test_config.dir/test/test_config.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_config.dir/test/test_config.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/test/test_config.cpp > CMakeFiles/test_config.dir/test/test_config.cpp.i
 
-CMakeFiles/test_config.dir/tests/test_config.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_config.dir/tests/test_config.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/tests/test_config.cpp -o CMakeFiles/test_config.dir/tests/test_config.cpp.s
-
-CMakeFiles/test_config.dir/config/ConfigParser.cpp.o: CMakeFiles/test_config.dir/flags.make
-CMakeFiles/test_config.dir/config/ConfigParser.cpp.o: /home/dich/ddfg/config/ConfigParser.cpp
-CMakeFiles/test_config.dir/config/ConfigParser.cpp.o: CMakeFiles/test_config.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/test_config.dir/config/ConfigParser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_config.dir/config/ConfigParser.cpp.o -MF CMakeFiles/test_config.dir/config/ConfigParser.cpp.o.d -o CMakeFiles/test_config.dir/config/ConfigParser.cpp.o -c /home/dich/ddfg/config/ConfigParser.cpp
-
-CMakeFiles/test_config.dir/config/ConfigParser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_config.dir/config/ConfigParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/config/ConfigParser.cpp > CMakeFiles/test_config.dir/config/ConfigParser.cpp.i
-
-CMakeFiles/test_config.dir/config/ConfigParser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_config.dir/config/ConfigParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/config/ConfigParser.cpp -o CMakeFiles/test_config.dir/config/ConfigParser.cpp.s
+CMakeFiles/test_config.dir/test/test_config.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/test_config.dir/test/test_config.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/test/test_config.cpp -o CMakeFiles/test_config.dir/test/test_config.cpp.s
 
 # Object files for target test_config
 test_config_OBJECTS = \
-"CMakeFiles/test_config.dir/tests/test_config.cpp.o" \
-"CMakeFiles/test_config.dir/config/ConfigParser.cpp.o"
+"CMakeFiles/test_config.dir/test/test_config.cpp.o"
 
 # External object files for target test_config
 test_config_EXTERNAL_OBJECTS =
 
-test_config: CMakeFiles/test_config.dir/tests/test_config.cpp.o
-test_config: CMakeFiles/test_config.dir/config/ConfigParser.cpp.o
+test_config: CMakeFiles/test_config.dir/test/test_config.cpp.o
 test_config: CMakeFiles/test_config.dir/build.make
+test_config: libfacerec_core.a
+test_config: /usr/lib/x86_64-linux-gnu/libdlib.so.19.24.0
+test_config: /usr/lib/x86_64-linux-gnu/libpng.so
+test_config: /usr/lib/x86_64-linux-gnu/libz.so
+test_config: /usr/lib/x86_64-linux-gnu/libjpeg.so
+test_config: /usr/lib/x86_64-linux-gnu/libblas.so
+test_config: /usr/lib/x86_64-linux-gnu/liblapack.so
+test_config: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 test_config: CMakeFiles/test_config.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test_config"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_config"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_config.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/test_config.dir/config/ConfigParser.cpp.o"
-  "CMakeFiles/test_config.dir/config/ConfigParser.cpp.o.d"
-  "CMakeFiles/test_config.dir/tests/test_config.cpp.o"
-  "CMakeFiles/test_config.dir/tests/test_config.cpp.o.d"
+  "CMakeFiles/test_config.dir/test/test_config.cpp.o"
+  "CMakeFiles/test_config.dir/test/test_config.cpp.o.d"
   "test_config"
   "test_config.pdb"
 )

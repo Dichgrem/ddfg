@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named facerec_core
+
+# Build rule for target.
+facerec_core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 facerec_core
+.PHONY : facerec_core
+
+# fast build rule for target.
+facerec_core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/build
+.PHONY : facerec_core/fast
+
+#=============================================================================
 # Target rules for targets named test_config
 
 # Build rule for target.
@@ -130,30 +143,17 @@ test_config/fast:
 .PHONY : test_config/fast
 
 #=============================================================================
-# Target rules for targets named test_timer
+# Target rules for targets named test_face_rec
 
 # Build rule for target.
-test_timer: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_timer
-.PHONY : test_timer
+test_face_rec: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_face_rec
+.PHONY : test_face_rec
 
 # fast build rule for target.
-test_timer/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/build
-.PHONY : test_timer/fast
-
-#=============================================================================
-# Target rules for targets named test_face
-
-# Build rule for target.
-test_face: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_face
-.PHONY : test_face
-
-# fast build rule for target.
-test_face/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/build
-.PHONY : test_face/fast
+test_face_rec/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/build
+.PHONY : test_face_rec/fast
 
 #=============================================================================
 # Target rules for targets named web_capture
@@ -168,161 +168,125 @@ web_capture/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/build
 .PHONY : web_capture/fast
 
-config/ConfigParser.o: config/ConfigParser.cpp.o
-.PHONY : config/ConfigParser.o
+src/ConfigParser.o: src/ConfigParser.cpp.o
+.PHONY : src/ConfigParser.o
 
 # target to build an object file
-config/ConfigParser.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/config/ConfigParser.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/config/ConfigParser.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o
-.PHONY : config/ConfigParser.cpp.o
+src/ConfigParser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o
+.PHONY : src/ConfigParser.cpp.o
 
-config/ConfigParser.i: config/ConfigParser.cpp.i
-.PHONY : config/ConfigParser.i
+src/ConfigParser.i: src/ConfigParser.cpp.i
+.PHONY : src/ConfigParser.i
 
 # target to preprocess a source file
-config/ConfigParser.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/config/ConfigParser.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/config/ConfigParser.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/config/ConfigParser.cpp.i
-.PHONY : config/ConfigParser.cpp.i
+src/ConfigParser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.i
+.PHONY : src/ConfigParser.cpp.i
 
-config/ConfigParser.s: config/ConfigParser.cpp.s
-.PHONY : config/ConfigParser.s
+src/ConfigParser.s: src/ConfigParser.cpp.s
+.PHONY : src/ConfigParser.s
 
 # target to generate assembly for a file
-config/ConfigParser.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/config/ConfigParser.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/config/ConfigParser.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/config/ConfigParser.cpp.s
-.PHONY : config/ConfigParser.cpp.s
+src/ConfigParser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.s
+.PHONY : src/ConfigParser.cpp.s
 
-face/FaceRecognizer.o: face/FaceRecognizer.cpp.o
-.PHONY : face/FaceRecognizer.o
+src/FaceRecognition.o: src/FaceRecognition.cpp.o
+.PHONY : src/FaceRecognition.o
 
 # target to build an object file
-face/FaceRecognizer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/face/FaceRecognizer.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o
-.PHONY : face/FaceRecognizer.cpp.o
+src/FaceRecognition.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o
+.PHONY : src/FaceRecognition.cpp.o
 
-face/FaceRecognizer.i: face/FaceRecognizer.cpp.i
-.PHONY : face/FaceRecognizer.i
+src/FaceRecognition.i: src/FaceRecognition.cpp.i
+.PHONY : src/FaceRecognition.i
 
 # target to preprocess a source file
-face/FaceRecognizer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/face/FaceRecognizer.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.i
-.PHONY : face/FaceRecognizer.cpp.i
+src/FaceRecognition.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.i
+.PHONY : src/FaceRecognition.cpp.i
 
-face/FaceRecognizer.s: face/FaceRecognizer.cpp.s
-.PHONY : face/FaceRecognizer.s
+src/FaceRecognition.s: src/FaceRecognition.cpp.s
+.PHONY : src/FaceRecognition.s
 
 # target to generate assembly for a file
-face/FaceRecognizer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/face/FaceRecognizer.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.s
-.PHONY : face/FaceRecognizer.cpp.s
+src/FaceRecognition.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.s
+.PHONY : src/FaceRecognition.cpp.s
 
-tests/test_config.o: tests/test_config.cpp.o
-.PHONY : tests/test_config.o
+src/PerformanceTimer.o: src/PerformanceTimer.cpp.o
+.PHONY : src/PerformanceTimer.o
 
 # target to build an object file
-tests/test_config.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.o
-.PHONY : tests/test_config.cpp.o
+src/PerformanceTimer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o
+.PHONY : src/PerformanceTimer.cpp.o
 
-tests/test_config.i: tests/test_config.cpp.i
-.PHONY : tests/test_config.i
+src/PerformanceTimer.i: src/PerformanceTimer.cpp.i
+.PHONY : src/PerformanceTimer.i
 
 # target to preprocess a source file
-tests/test_config.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.i
-.PHONY : tests/test_config.cpp.i
+src/PerformanceTimer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.i
+.PHONY : src/PerformanceTimer.cpp.i
 
-tests/test_config.s: tests/test_config.cpp.s
-.PHONY : tests/test_config.s
+src/PerformanceTimer.s: src/PerformanceTimer.cpp.s
+.PHONY : src/PerformanceTimer.s
 
 # target to generate assembly for a file
-tests/test_config.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/tests/test_config.cpp.s
-.PHONY : tests/test_config.cpp.s
+src/PerformanceTimer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.s
+.PHONY : src/PerformanceTimer.cpp.s
 
-tests/test_face_recognition.o: tests/test_face_recognition.cpp.o
-.PHONY : tests/test_face_recognition.o
+test/test_config.o: test/test_config.cpp.o
+.PHONY : test/test_config.o
 
 # target to build an object file
-tests/test_face_recognition.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/tests/test_face_recognition.cpp.o
-.PHONY : tests/test_face_recognition.cpp.o
+test/test_config.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.o
+.PHONY : test/test_config.cpp.o
 
-tests/test_face_recognition.i: tests/test_face_recognition.cpp.i
-.PHONY : tests/test_face_recognition.i
+test/test_config.i: test/test_config.cpp.i
+.PHONY : test/test_config.i
 
 # target to preprocess a source file
-tests/test_face_recognition.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/tests/test_face_recognition.cpp.i
-.PHONY : tests/test_face_recognition.cpp.i
+test/test_config.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.i
+.PHONY : test/test_config.cpp.i
 
-tests/test_face_recognition.s: tests/test_face_recognition.cpp.s
-.PHONY : tests/test_face_recognition.s
+test/test_config.s: test/test_config.cpp.s
+.PHONY : test/test_config.s
 
 # target to generate assembly for a file
-tests/test_face_recognition.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face.dir/build.make CMakeFiles/test_face.dir/tests/test_face_recognition.cpp.s
-.PHONY : tests/test_face_recognition.cpp.s
+test/test_config.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/test/test_config.cpp.s
+.PHONY : test/test_config.cpp.s
 
-tests/test_performance_timer.o: tests/test_performance_timer.cpp.o
-.PHONY : tests/test_performance_timer.o
+test/test_face_rec.o: test/test_face_rec.cpp.o
+.PHONY : test/test_face_rec.o
 
 # target to build an object file
-tests/test_performance_timer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/tests/test_performance_timer.cpp.o
-.PHONY : tests/test_performance_timer.cpp.o
+test/test_face_rec.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/test/test_face_rec.cpp.o
+.PHONY : test/test_face_rec.cpp.o
 
-tests/test_performance_timer.i: tests/test_performance_timer.cpp.i
-.PHONY : tests/test_performance_timer.i
-
-# target to preprocess a source file
-tests/test_performance_timer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/tests/test_performance_timer.cpp.i
-.PHONY : tests/test_performance_timer.cpp.i
-
-tests/test_performance_timer.s: tests/test_performance_timer.cpp.s
-.PHONY : tests/test_performance_timer.s
-
-# target to generate assembly for a file
-tests/test_performance_timer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/tests/test_performance_timer.cpp.s
-.PHONY : tests/test_performance_timer.cpp.s
-
-timer/PerformanceTimer.o: timer/PerformanceTimer.cpp.o
-.PHONY : timer/PerformanceTimer.o
-
-# target to build an object file
-timer/PerformanceTimer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/timer/PerformanceTimer.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o
-.PHONY : timer/PerformanceTimer.cpp.o
-
-timer/PerformanceTimer.i: timer/PerformanceTimer.cpp.i
-.PHONY : timer/PerformanceTimer.i
+test/test_face_rec.i: test/test_face_rec.cpp.i
+.PHONY : test/test_face_rec.i
 
 # target to preprocess a source file
-timer/PerformanceTimer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/timer/PerformanceTimer.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.i
-.PHONY : timer/PerformanceTimer.cpp.i
+test/test_face_rec.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/test/test_face_rec.cpp.i
+.PHONY : test/test_face_rec.cpp.i
 
-timer/PerformanceTimer.s: timer/PerformanceTimer.cpp.s
-.PHONY : timer/PerformanceTimer.s
+test/test_face_rec.s: test/test_face_rec.cpp.s
+.PHONY : test/test_face_rec.s
 
 # target to generate assembly for a file
-timer/PerformanceTimer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_timer.dir/build.make CMakeFiles/test_timer.dir/timer/PerformanceTimer.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.s
-.PHONY : timer/PerformanceTimer.cpp.s
+test/test_face_rec.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/test/test_face_rec.cpp.s
+.PHONY : test/test_face_rec.cpp.s
 
 web_capture.o: web_capture.cpp.o
 .PHONY : web_capture.o
@@ -356,28 +320,25 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... facerec_core"
 	@echo "... test_config"
-	@echo "... test_face"
-	@echo "... test_timer"
+	@echo "... test_face_rec"
 	@echo "... web_capture"
-	@echo "... config/ConfigParser.o"
-	@echo "... config/ConfigParser.i"
-	@echo "... config/ConfigParser.s"
-	@echo "... face/FaceRecognizer.o"
-	@echo "... face/FaceRecognizer.i"
-	@echo "... face/FaceRecognizer.s"
-	@echo "... tests/test_config.o"
-	@echo "... tests/test_config.i"
-	@echo "... tests/test_config.s"
-	@echo "... tests/test_face_recognition.o"
-	@echo "... tests/test_face_recognition.i"
-	@echo "... tests/test_face_recognition.s"
-	@echo "... tests/test_performance_timer.o"
-	@echo "... tests/test_performance_timer.i"
-	@echo "... tests/test_performance_timer.s"
-	@echo "... timer/PerformanceTimer.o"
-	@echo "... timer/PerformanceTimer.i"
-	@echo "... timer/PerformanceTimer.s"
+	@echo "... src/ConfigParser.o"
+	@echo "... src/ConfigParser.i"
+	@echo "... src/ConfigParser.s"
+	@echo "... src/FaceRecognition.o"
+	@echo "... src/FaceRecognition.i"
+	@echo "... src/FaceRecognition.s"
+	@echo "... src/PerformanceTimer.o"
+	@echo "... src/PerformanceTimer.i"
+	@echo "... src/PerformanceTimer.s"
+	@echo "... test/test_config.o"
+	@echo "... test/test_config.i"
+	@echo "... test/test_config.s"
+	@echo "... test/test_face_rec.o"
+	@echo "... test/test_face_rec.i"
+	@echo "... test/test_face_rec.s"
 	@echo "... web_capture.o"
 	@echo "... web_capture.i"
 	@echo "... web_capture.s"

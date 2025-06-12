@@ -1,0 +1,2 @@
+/usr/bin/ar qc libfacerec_core.a CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o
+/usr/bin/ranlib libfacerec_core.a

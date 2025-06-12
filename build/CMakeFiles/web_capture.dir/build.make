@@ -83,63 +83,16 @@ CMakeFiles/web_capture.dir/web_capture.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/web_capture.dir/web_capture.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/web_capture.cpp -o CMakeFiles/web_capture.dir/web_capture.cpp.s
 
-CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o: CMakeFiles/web_capture.dir/flags.make
-CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o: /home/dich/ddfg/config/ConfigParser.cpp
-CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o: CMakeFiles/web_capture.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o -MF CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o.d -o CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o -c /home/dich/ddfg/config/ConfigParser.cpp
-
-CMakeFiles/web_capture.dir/config/ConfigParser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/web_capture.dir/config/ConfigParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/config/ConfigParser.cpp > CMakeFiles/web_capture.dir/config/ConfigParser.cpp.i
-
-CMakeFiles/web_capture.dir/config/ConfigParser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/web_capture.dir/config/ConfigParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/config/ConfigParser.cpp -o CMakeFiles/web_capture.dir/config/ConfigParser.cpp.s
-
-CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o: CMakeFiles/web_capture.dir/flags.make
-CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o: /home/dich/ddfg/face/FaceRecognizer.cpp
-CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o: CMakeFiles/web_capture.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o -MF CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o.d -o CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o -c /home/dich/ddfg/face/FaceRecognizer.cpp
-
-CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/face/FaceRecognizer.cpp > CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.i
-
-CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/face/FaceRecognizer.cpp -o CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.s
-
-CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o: CMakeFiles/web_capture.dir/flags.make
-CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o: /home/dich/ddfg/timer/PerformanceTimer.cpp
-CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o: CMakeFiles/web_capture.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o -MF CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o.d -o CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o -c /home/dich/ddfg/timer/PerformanceTimer.cpp
-
-CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/timer/PerformanceTimer.cpp > CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.i
-
-CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/timer/PerformanceTimer.cpp -o CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.s
-
 # Object files for target web_capture
 web_capture_OBJECTS = \
-"CMakeFiles/web_capture.dir/web_capture.cpp.o" \
-"CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o" \
-"CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o" \
-"CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o"
+"CMakeFiles/web_capture.dir/web_capture.cpp.o"
 
 # External object files for target web_capture
 web_capture_EXTERNAL_OBJECTS =
 
 web_capture: CMakeFiles/web_capture.dir/web_capture.cpp.o
-web_capture: CMakeFiles/web_capture.dir/config/ConfigParser.cpp.o
-web_capture: CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o
-web_capture: CMakeFiles/web_capture.dir/timer/PerformanceTimer.cpp.o
 web_capture: CMakeFiles/web_capture.dir/build.make
+web_capture: libfacerec_core.a
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.6.0
@@ -177,6 +130,12 @@ web_capture: /usr/lib/x86_64-linux-gnu/libopencv_wechat_qrcode.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libdlib.so.19.24.0
+web_capture: /usr/lib/x86_64-linux-gnu/libpng.so
+web_capture: /usr/lib/x86_64-linux-gnu/libz.so
+web_capture: /usr/lib/x86_64-linux-gnu/libjpeg.so
+web_capture: /usr/lib/x86_64-linux-gnu/libblas.so
+web_capture: /usr/lib/x86_64-linux-gnu/liblapack.so
+web_capture: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.6.0
@@ -196,14 +155,8 @@ web_capture: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.6.0
 web_capture: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.6.0
-web_capture: /usr/lib/x86_64-linux-gnu/libpng.so
-web_capture: /usr/lib/x86_64-linux-gnu/libz.so
-web_capture: /usr/lib/x86_64-linux-gnu/libjpeg.so
-web_capture: /usr/lib/x86_64-linux-gnu/libblas.so
-web_capture: /usr/lib/x86_64-linux-gnu/liblapack.so
-web_capture: /usr/lib/x86_64-linux-gnu/libsqlite3.so
 web_capture: CMakeFiles/web_capture.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable web_capture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable web_capture"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/web_capture.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -1,9 +1,0 @@
-use_camera: "true"
-video_path: "images/musk.mp4"
-face_threshold: "0.6"
-shape_model: "models/shape_predictor_5_face_landmarks.dat"
-dnn_model: "models/dlib_face_recognition_resnet_model_v1.dat"
-face_lib_csv: "facelib.csv"
-sampling_interval_ms: "200"
-debug: "true"
-

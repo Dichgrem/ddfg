@@ -1,6 +1,6 @@
+/home/dich/ddfg/build/CMakeFiles/facerec_core.dir
 /home/dich/ddfg/build/CMakeFiles/test_config.dir
-/home/dich/ddfg/build/CMakeFiles/test_timer.dir
-/home/dich/ddfg/build/CMakeFiles/test_face.dir
+/home/dich/ddfg/build/CMakeFiles/test_face_rec.dir
 /home/dich/ddfg/build/CMakeFiles/web_capture.dir
 /home/dich/ddfg/build/CMakeFiles/edit_cache.dir
 /home/dich/ddfg/build/CMakeFiles/rebuild_cache.dir

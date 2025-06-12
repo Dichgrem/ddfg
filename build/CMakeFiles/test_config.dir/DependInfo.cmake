@@ -8,8 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dich/ddfg/config/ConfigParser.cpp" "CMakeFiles/test_config.dir/config/ConfigParser.cpp.o" "gcc" "CMakeFiles/test_config.dir/config/ConfigParser.cpp.o.d"
-  "/home/dich/ddfg/tests/test_config.cpp" "CMakeFiles/test_config.dir/tests/test_config.cpp.o" "gcc" "CMakeFiles/test_config.dir/tests/test_config.cpp.o.d"
+  "/home/dich/ddfg/test/test_config.cpp" "CMakeFiles/test_config.dir/test/test_config.cpp.o" "gcc" "CMakeFiles/test_config.dir/test/test_config.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
