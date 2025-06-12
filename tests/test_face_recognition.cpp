@@ -1,21 +1,20 @@
-#include "../face/FaceRecognizer.h"
-#include "../timer/PerformanceTimer.h"
-#include <dlib/image_io.h>
+#include "face/FaceRecognizer.h"
+#include <dlib/image_io.h>  // for load_image
 #include <iostream>
 
 int main() {
-    FaceRecognizer fr("../config.yaml");
-    if (!fr.init()) return -1;
-    fr.printLibrary();
+    FaceRecognizer recognizer("config/face.cfg");
+    if (!recognizer.init()) {
+        std::cerr << "Init failed!" << std::endl;
+        return 1;
+    }
 
-    matrix<rgb_pixel> img;
-    load_image(img, "test_images/musk_face.jpg");
-    std::string name = fr.recognize(img);
-    std::cout << "识别结果: " << (name.empty()?"陌生人":name) << std::endl;
+    dlib::matrix<dlib::rgb_pixel> img;
+    dlib::load_image(img, "test_images/musk_face.jpg");
 
-    load_image(img, "test_images/unknown.jpg");
-    name = fr.recognize(img);
-    std::cout << "识别结果: " << (name.empty()?"陌生人":name) << std::endl;
+    std::string name = recognizer.recognize(img);
+    std::cout << "识别结果: " << name << std::endl;
+
     return 0;
 }
 
