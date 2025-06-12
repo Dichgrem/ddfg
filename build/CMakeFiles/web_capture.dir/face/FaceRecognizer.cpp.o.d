@@ -1,4 +1,4 @@
-CMakeFiles/test_face.dir/face/FaceRecognizer.cpp.o: \
+CMakeFiles/web_capture.dir/face/FaceRecognizer.cpp.o: \
  /home/dich/ddfg/face/FaceRecognizer.cpp /usr/include/stdc-predef.h \
  /home/dich/ddfg/face/FaceRecognizer.h /usr/include/c++/13/memory \
  /usr/include/c++/13/bits/memoryfwd.h \

@@ -1,4 +1,4 @@
-use_camera: "ture"
+use_camera: "true"
 video_path: "images/musk.mp4"
 face_threshold: "0.6"
 shape_model: "models/shape_predictor_5_face_landmarks.dat"
