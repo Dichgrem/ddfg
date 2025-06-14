@@ -1,12 +1,12 @@
 {
-    "use_camera": ture,
+    "use_camera": "ture",
     "video_path": "path/to/your/video.mp4",
-    "face_match_threshold": 0.4,
+    "face_match_threshold": "0.4",
     "models": {
-        "shape_predictor": "models/shape_predictor_5_face_landmarks.dat",
-        "face_recognition": "models/dlib_face_recognition_resnet_model_v1.dat"
+        "shape_predictor": "../model/shape_predictor_5_face_landmarks.dat",
+        "face_recognition": "../model/dlib_face_recognition_resnet_model_v1.dat"
     },
     "face_library_path": "./facelib",
-    "debug_mode": true,
-    "frame_sample_interval": 2
+    "debug_mode": "true",
+    "frame_sample_interval": "2"
 }

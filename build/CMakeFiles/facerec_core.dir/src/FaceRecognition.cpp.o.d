@@ -1,6 +1,6 @@
 CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o: \
  /home/dich/ddfg/src/FaceRecognition.cpp /usr/include/stdc-predef.h \
- /home/dich/ddfg/include/FaceRecognition.h \
+ /home/dich/ddfg/include/FaceRecognition.hpp \
  /home/dich/ddfg/include/ConfigParser.h /usr/include/c++/13/string \
  /usr/include/c++/13/bits/requires_hosted.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/c++config.h \
@@ -1154,4 +1154,5 @@ CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o: \
  /usr/include/dlib/enable_if.h /usr/include/dlib/matrix.h \
  /usr/include/dlib/image_processing/generic_image.h \
  /usr/include/dlib/image_saver/save_webp.h \
- /usr/include/dlib/image_saver/save_webp_abstract.h
+ /usr/include/dlib/image_saver/save_webp_abstract.h \
+ /home/dich/ddfg/include/ConfigParser.h

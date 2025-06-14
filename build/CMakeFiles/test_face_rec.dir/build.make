@@ -93,6 +93,7 @@ test_face_rec_EXTERNAL_OBJECTS =
 test_face_rec: CMakeFiles/test_face_rec.dir/test/test_face_rec.cpp.o
 test_face_rec: CMakeFiles/test_face_rec.dir/build.make
 test_face_rec: libfacerec_core.a
+test_face_rec: /usr/lib/x86_64-linux-gnu/libdlib.so.19.24.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_stitching.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_alphamat.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_aruco.so.4.6.0
@@ -129,23 +130,22 @@ test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_viz.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_wechat_qrcode.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_xobjdetect.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_xphoto.so.4.6.0
-test_face_rec: /usr/lib/x86_64-linux-gnu/libdlib.so.19.24.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libpng.so
 test_face_rec: /usr/lib/x86_64-linux-gnu/libz.so
 test_face_rec: /usr/lib/x86_64-linux-gnu/libjpeg.so
 test_face_rec: /usr/lib/x86_64-linux-gnu/libblas.so
 test_face_rec: /usr/lib/x86_64-linux-gnu/liblapack.so
 test_face_rec: /usr/lib/x86_64-linux-gnu/libsqlite3.so
+test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.6.0
+test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_highgui.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_datasets.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_plot.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_text.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_ml.so.4.6.0
-test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_phase_unwrapping.so.4.6.0
-test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_optflow.so.4.6.0
+test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_ximgproc.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_video.so.4.6.0
-test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_videoio.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_imgcodecs.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_objdetect.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_calib3d.so.4.6.0
@@ -155,6 +155,7 @@ test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_flann.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_photo.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_imgproc.so.4.6.0
 test_face_rec: /usr/lib/x86_64-linux-gnu/libopencv_core.so.4.6.0
+test_face_rec: libconfig_parser.a
 test_face_rec: CMakeFiles/test_face_rec.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_face_rec"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_face_rec.dir/link.txt --verbose=$(VERBOSE)

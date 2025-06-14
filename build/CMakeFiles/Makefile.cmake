@@ -18,9 +18,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVConfig.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules-release.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/opencv4/OpenCVModules.cmake"
-  "/usr/local/lib/cmake/nadjieb_mjpeg_streamer/nadjieb_mjpeg_streamerConfig.cmake"
-  "/usr/local/lib/cmake/nadjieb_mjpeg_streamer/nadjieb_mjpeg_streamerConfigVersion.cmake"
-  "/usr/local/lib/cmake/nadjieb_mjpeg_streamer/nadjieb_mjpeg_streamerTargets.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeCXXCompiler.cmake.in"
   "/usr/share/cmake-3.28/Modules/CMakeCXXCompilerABI.cpp"
   "/usr/share/cmake-3.28/Modules/CMakeCXXInformation.cmake"
@@ -45,9 +42,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.28/Modules/CMakeTestCXXCompiler.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeTestCompilerCommon.cmake"
   "/usr/share/cmake-3.28/Modules/CMakeUnixFindMake.cmake"
-  "/usr/share/cmake-3.28/Modules/CheckCXXSourceCompiles.cmake"
-  "/usr/share/cmake-3.28/Modules/CheckIncludeFileCXX.cmake"
-  "/usr/share/cmake-3.28/Modules/CheckLibraryExists.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/ADSP-DetermineCompiler.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/ARMCC-DetermineCompiler.cmake"
   "/usr/share/cmake-3.28/Modules/Compiler/ARMClang-DetermineCompiler.cmake"
@@ -93,8 +87,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/usr/share/cmake-3.28/Modules/Compiler/zOS-CXX-DetermineCompiler.cmake"
   "/usr/share/cmake-3.28/Modules/FindPackageHandleStandardArgs.cmake"
   "/usr/share/cmake-3.28/Modules/FindPackageMessage.cmake"
-  "/usr/share/cmake-3.28/Modules/FindThreads.cmake"
-  "/usr/share/cmake-3.28/Modules/Internal/CheckSourceCompiles.cmake"
   "/usr/share/cmake-3.28/Modules/Internal/FeatureTesting.cmake"
   "/usr/share/cmake-3.28/Modules/Platform/Linux-Determine-CXX.cmake"
   "/usr/share/cmake-3.28/Modules/Platform/Linux-GNU-CXX.cmake"
@@ -120,8 +112,8 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/config_parser.dir/DependInfo.cmake"
   "CMakeFiles/facerec_core.dir/DependInfo.cmake"
   "CMakeFiles/test_config.dir/DependInfo.cmake"
   "CMakeFiles/test_face_rec.dir/DependInfo.cmake"
-  "CMakeFiles/web_capture.dir/DependInfo.cmake"
   )

@@ -1,112 +1,171 @@
-#include "FaceRecognition.h"
+#include "FaceRecognition.hpp"
+#include "ConfigParser.h"
+
+#include <dlib/image_processing/frontal_face_detector.h>
+#include <dlib/image_io.h>
 #include <iostream>
 #include <filesystem>
+#include <fstream>
+#include <sstream>
 
-FaceRecognition::FaceRecognition(const ConfigParser& config) {
+namespace dr = dlib;
+
+FaceRecognition::FaceRecognition(const ConfigParser& config)
+{
     std::cout << "Initializing FaceRecognition module..." << std::endl;
     loadModels(config);
-    buildFaceLibrary(config.get<std::string>("face_library_path", ""));
+
     face_match_threshold_ = config.get<double>("face_match_threshold", 0.6);
-}
 
-void FaceRecognition::loadModels(const ConfigParser& config) {
-    auto sp_path = config.get<std::string>("models.shape_predictor", "");
-    auto net_path = config.get<std::string>("models.face_recognition", "");
-
-    if (sp_path.empty() || net_path.empty()){
-        throw std::runtime_error("Model paths are not configured in config file.");
+    bool use_csv = config.get<bool>("face_lib.use_csv", false);
+    if (use_csv)
+    {
+        const auto csv_path = config.get<std::string>("face_lib.csv_path", "");
+        loadLibraryFromCSV(csv_path);
     }
-    
-    try {
-        dlib::deserialize(sp_path) >> sp_;
-        dlib::deserialize(net_path) >> net_;
-        std::cout << "Dlib models loaded successfully." << std::endl;
-    } catch (const std::exception& e) {
-        std::cerr << "Error loading models: " << e.what() << std::endl;
-        throw;
+    else
+    {
+        const auto dir_path = config.get<std::string>("face_lib.dir_path", "");
+        buildFaceLibrary(dir_path);
     }
 }
 
-void FaceRecognition::buildFaceLibrary(const std::string& lib_path) {
-    if (lib_path.empty() || !std::filesystem::exists(lib_path)) {
-        std::cerr << "Face library path does not exist: " << lib_path << std::endl;
+void FaceRecognition::loadModels(const ConfigParser& config)
+{
+    const auto sp_path  = config.get<std::string>("models.shape_predictor", "");
+    const auto net_path = config.get<std::string>("models.face_recognition", "");
+    if (sp_path.empty() || net_path.empty())
+        throw std::runtime_error("Model paths missing in config.");
+
+    dr::deserialize(sp_path) >> sp_;
+    std::cout << "Shape predictor loaded from: " << sp_path << std::endl;
+
+    dr::deserialize(net_path) >> net_;
+    std::cout << "Face recognition model loaded from: " << net_path << std::endl;
+}
+
+void FaceRecognition::loadLibraryFromCSV(const std::string& csv_path)
+{
+    if (csv_path.empty() || !std::filesystem::exists(csv_path))
+    {
+        std::cerr << "CSV path not found: " << csv_path << std::endl;
         return;
     }
 
-    dlib::frontal_face_detector detector = dlib::get_frontal_face_detector();
+    std::ifstream fin(csv_path);
+    std::string line;
+    size_t count = 0;
 
-    for (const auto& entry : std::filesystem::directory_iterator(lib_path)) {
-        if (entry.is_directory()) {
-            std::string person_name = entry.path().filename().string();
-            std::cout << "Processing person: " << person_name << std::endl;
+    while (std::getline(fin, line))
+    {
+        std::istringstream iss(line);
+        std::string name;
+        if (!std::getline(iss, name, ',')) continue;
 
-            for (const auto& img_entry : std::filesystem::directory_iterator(entry.path())) {
-                dlib::matrix<dlib::rgb_pixel> img;
-                try {
-                    dlib::load_image(img, img_entry.path().string());
-                    
-                    auto faces = detector(img);
-                    if (faces.size() != 1) {
-                         std::cerr << "Warning: Skipping image " << img_entry.path().string() 
-                                   << " for " << person_name << ". Found " << faces.size() << " faces, expected 1." << std::endl;
-                        continue;
-                    }
+        std::vector<float> values;
+        float v;
+        while (iss >> v) values.push_back(v);
 
-                    auto shape = sp_(img, faces[0]);
-                    dlib::matrix<dlib::rgb_pixel> face_chip;
-                    dlib::extract_image_chip(img, dlib::get_face_chip_details(shape, 150, 0.25), face_chip);
-                    
-                    dlib::matrix<float, 0, 1> face_descriptor = net_(face_chip);
-                    face_library_[person_name] = face_descriptor;
-                    
-                    // 只处理每个文件夹的第一张有效图片
-                    break; 
+        if (values.empty()) continue;
+        dr::matrix<float,0,1> desc(values.size());
+        for (size_t i = 0; i < values.size(); ++i)
+            desc(i) = values[i];
 
-                } catch(const std::exception& e) {
-                    std::cerr << "Error processing image " << img_entry.path().string() << ": " << e.what() << std::endl;
-                }
+        face_library_[name] = desc;
+        ++count;
+    }
+    std::cout << "Loaded " << count << " entries from CSV library." << std::endl;
+}
+
+void FaceRecognition::buildFaceLibrary(const std::string& dir_path)
+{
+    if (dir_path.empty() || !std::filesystem::exists(dir_path))
+    {
+        std::cerr << "Directory path not found: " << dir_path << std::endl;
+        return;
+    }
+
+    auto detector = dr::get_frontal_face_detector();
+    size_t count = 0;
+
+    for (const auto& person_dir : std::filesystem::directory_iterator(dir_path))
+    {
+        if (!person_dir.is_directory()) continue;
+        const auto name = person_dir.path().filename().string();
+
+        for (const auto& img_file : std::filesystem::directory_iterator(person_dir))
+        {
+            dr::matrix<dr::rgb_pixel> img;
+            try
+            {
+                dr::load_image(img, img_file.path().string());
             }
+            catch (const std::exception& e)
+            {
+                std::cerr << "Failed loading image " << img_file.path()
+                          << ": " << e.what() << std::endl;
+                continue;
+            }
+
+            auto faces = detector(img);
+            if (faces.size() != 1)
+            {
+                std::cerr << "Skipping " << img_file.path()
+                          << ": found " << faces.size() << " faces." << std::endl;
+                continue;
+            }
+
+            auto shape = sp_(img, faces[0]);
+            dr::matrix<dr::rgb_pixel> chip;
+            dr::extract_image_chip(img,
+                dr::get_face_chip_details(shape, 150, 0.25),
+                chip);
+
+            auto desc = net_(chip);
+            face_library_[name] = desc;
+            ++count;
+            break;  // 每个子目录只用第一张有效图片
         }
     }
-    std::cout << "Face library built. Total unique faces: " << face_library_.size() << std::endl;
+    std::cout << "Built face library from directory: " << count << " entries." << std::endl;
 }
 
-std::string FaceRecognition::recognize(const dlib::matrix<dlib::rgb_pixel>& face_chip) {
-    if (face_library_.empty()) {
+std::string FaceRecognition::recognize(const dr::matrix<dr::rgb_pixel>& face_chip)
+{
+    if (face_library_.empty())
         return "Stranger";
-    }
 
-    dlib::matrix<float, 0, 1> face_descriptor = net_(face_chip);
-    
-    double min_dist = 1.0;
-    std::string matched_name = "Stranger";
+    auto descriptor = net_(face_chip);
+    double min_dist = std::numeric_limits<double>::infinity();
+    std::string best = "Stranger";
 
-    for (const auto& pair : face_library_) {
-        double dist = dlib::length(pair.second - face_descriptor);
-        if (dist < min_dist) {
-            min_dist = dist;
-            matched_name = pair.first;
+    for (const auto& [name, lib_desc] : face_library_)
+    {
+        double d = dlib::length(lib_desc - descriptor);
+        if (d < min_dist)
+        {
+            min_dist = d;
+            best = name;
         }
     }
 
-    if (min_dist <= face_match_threshold_) {
-        return matched_name;
-    }
-
-    return "Stranger";
+    return (min_dist <= face_match_threshold_) ? best : "Stranger";
 }
 
-void FaceRecognition::printFaceLibInfo() const {
-    std::cout << "----------------------------------" << std::endl;
-    std::cout << "Face Library Information" << std::endl;
-    std::cout << "Loaded faces count: " << face_library_.size() << std::endl;
-    std::cout << "Matching threshold: " << face_match_threshold_ << std::endl;
-    for (const auto& pair : face_library_) {
-        std::cout << " - Name: " << pair.first << ", Feature dimension: " << pair.second.size() << std::endl;
+void FaceRecognition::printFaceLibInfo() const
+{
+    std::cout << "----- Face Library Info -----\n";
+    std::cout << "Total entries : " << face_library_.size() << "\n";
+    std::cout << "Threshold     : " << face_match_threshold_ << "\n";
+    for (const auto& [name, desc] : face_library_)
+    {
+        std::cout << " - " << name << " (dim=" << desc.size() << ")\n";
     }
-    std::cout << "----------------------------------" << std::endl;
+    std::cout << "-----------------------------\n";
 }
 
-dlib::shape_predictor FaceRecognition::getShapePredictor() const {
+dr::shape_predictor FaceRecognition::getShapePredictor() const
+{
     return sp_;
 }
+

@@ -14,6 +14,9 @@
 # EXTERNAL cache entries
 ########################
 
+//只编译并运行 test_config 测试
+BUILD_ONLY_TEST_CONFIG:BOOL=OFF
+
 //Path to a program.
 CMAKE_ADDR2LINE:FILEPATH=/usr/bin/addr2line
 
@@ -204,9 +207,6 @@ OpenCV_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/opencv4
 //The directory containing a CMake configuration file for dlib.
 dlib_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/dlib
 
-//The directory containing a CMake configuration file for nadjieb_mjpeg_streamer.
-nadjieb_mjpeg_streamer_DIR:PATH=/usr/local/lib/cmake/nadjieb_mjpeg_streamer
-
 
 ########################
 # INTERNAL cache entries
@@ -274,8 +274,6 @@ CMAKE_GENERATOR_INSTANCE:INTERNAL=
 CMAKE_GENERATOR_PLATFORM:INTERNAL=
 //Name of generator toolset.
 CMAKE_GENERATOR_TOOLSET:INTERNAL=
-//Test CMAKE_HAVE_LIBC_PTHREAD
-CMAKE_HAVE_LIBC_PTHREAD:INTERNAL=1
 //Source directory with the top level CMakeLists.txt file for this
 // project
 CMAKE_HOME_DIRECTORY:INTERNAL=/home/dich/ddfg
@@ -345,10 +343,6 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding OpenCV
 FIND_PACKAGE_MESSAGE_DETAILS_OpenCV:INTERNAL=[/usr][v4.6.0()]
-//Details about finding Threads
-FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
-//Details about finding nadjieb_mjpeg_streamer
-FIND_PACKAGE_MESSAGE_DETAILS_nadjieb_mjpeg_streamer:INTERNAL=[/usr/local/lib/cmake/nadjieb_mjpeg_streamer/nadjieb_mjpeg_streamerConfig.cmake][v3.0.0()]
 //linker supports push/pop state
 _CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED:INTERNAL=TRUE
 

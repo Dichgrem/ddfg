@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/opencv4 -I/home/dich/ddfg/include
+CXX_INCLUDES = -I/home/dich/ddfg/include -isystem /usr/include/opencv4
 
 CXX_FLAGS = -std=gnu++17 -Wreturn-type
 

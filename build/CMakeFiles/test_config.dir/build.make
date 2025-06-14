@@ -92,14 +92,7 @@ test_config_EXTERNAL_OBJECTS =
 
 test_config: CMakeFiles/test_config.dir/test/test_config.cpp.o
 test_config: CMakeFiles/test_config.dir/build.make
-test_config: libfacerec_core.a
-test_config: /usr/lib/x86_64-linux-gnu/libdlib.so.19.24.0
-test_config: /usr/lib/x86_64-linux-gnu/libpng.so
-test_config: /usr/lib/x86_64-linux-gnu/libz.so
-test_config: /usr/lib/x86_64-linux-gnu/libjpeg.so
-test_config: /usr/lib/x86_64-linux-gnu/libblas.so
-test_config: /usr/lib/x86_64-linux-gnu/liblapack.so
-test_config: /usr/lib/x86_64-linux-gnu/libsqlite3.so
+test_config: libconfig_parser.a
 test_config: CMakeFiles/test_config.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable test_config"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test_config.dir/link.txt --verbose=$(VERBOSE)

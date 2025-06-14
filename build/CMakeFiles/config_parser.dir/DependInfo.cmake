@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dich/ddfg/web_capture.cpp" "CMakeFiles/web_capture.dir/web_capture.cpp.o" "gcc" "CMakeFiles/web_capture.dir/web_capture.cpp.o.d"
+  "/home/dich/ddfg/src/ConfigParser.cpp" "CMakeFiles/config_parser.dir/src/ConfigParser.cpp.o" "gcc" "CMakeFiles/config_parser.dir/src/ConfigParser.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

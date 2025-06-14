@@ -4,55 +4,81 @@ project(FaceRecognitionApp CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# --- 1. 寻找依赖库 ---
-# OpenCV
+# 启用 CTest
+enable_testing()
+
+# 开关：只编译并运行 test_config
+option(BUILD_ONLY_TEST_CONFIG "只编译并运行 test_config 测试" OFF)
+
+# 公共头文件目录
+include_directories(${PROJECT_SOURCE_DIR}/include)
+
+# 单独把 ConfigParser 编译成静态库
+add_library(config_parser STATIC
+    src/ConfigParser.cpp
+)
+target_include_directories(config_parser PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
+)
+
+# 如果只需要编译 test_config
+if (BUILD_ONLY_TEST_CONFIG)
+    message(STATUS ">>> BUILD_ONLY_TEST_CONFIG 模式: 仅编译 test_config <<<")
+
+    add_executable(test_config
+        test/test_config.cpp
+    )
+    target_link_libraries(test_config
+        PRIVATE config_parser
+    )
+    add_test(NAME test_config COMMAND test_config)
+    return()
+endif()
+
+# 常规模式：查找外部依赖
 find_package(OpenCV REQUIRED)
-include_directories(${OpenCV_INCLUDE_DIRS})
+find_package(dlib    REQUIRED)
 
-# dlib
-# 建议使用vcpkg或手动编译来安装dlib
-# 如果dlib安装在标准位置, find_package可以找到它
-# 如果没有，你需要设置 dlib_DIR
-find_package(dlib REQUIRED)
-
-# nlohmann_json (header-only, a single file)
-# 下载 include/nlohmann/json.hpp 即可
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# mjpeg-streamer
-# 同样，建议使用vcpkg安装或手动编译
-# set(nadjieb_mjpeg_streamer_DIR "path/to/cmake/config")
-find_package(nadjieb_mjpeg_streamer REQUIRED)
-
-
-# --- 2. 添加头文件目录 ---
-include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# --- 3. 定义我们的核心库 ---
-# 将所有模块化的类编译成一个静态库，方便链接
+# 核心库：facerec_core
 add_library(facerec_core STATIC
     src/ConfigParser.cpp
     src/FaceRecognition.cpp
     src/PerformanceTimer.cpp
 )
-# 为我们的库添加dlib的依赖
-target_link_libraries(facerec_core PUBLIC dlib::dlib)
-
-
-# --- 4. 定义测试可执行文件 ---
-# 测试ConfigParser
-add_executable(test_config test/test_config.cpp)
-target_link_libraries(test_config PRIVATE facerec_core)
-
-# 测试FaceRecognition
-add_executable(test_face_rec test/test_face_rec.cpp)
-target_link_libraries(test_face_rec PRIVATE facerec_core ${OpenCV_LIBS})
-
-# --- 5. 定义主程序可执行文件 ---
-add_executable(web_capture web_capture.cpp)
-target_link_libraries(web_capture PRIVATE 
-    facerec_core
-    ${OpenCV_LIBS}
-    dlib::dlib
-    nadjieb_mjpeg_streamer::nadjieb_mjpeg_streamer
+target_include_directories(facerec_core PUBLIC
+    ${PROJECT_SOURCE_DIR}/include
 )
+target_link_libraries(facerec_core
+    PUBLIC config_parser
+           dlib::dlib
+           ${OpenCV_LIBS}
+)
+
+# 测试1：test_config.cpp
+add_executable(test_config
+    test/test_config.cpp
+)
+target_link_libraries(test_config
+    PRIVATE config_parser
+)
+add_test(NAME test_config COMMAND test_config)
+
+# 测试2：test_face_rec.cpp
+add_executable(test_face_rec
+    test/test_face_rec.cpp
+)
+target_link_libraries(test_face_rec
+    PRIVATE facerec_core
+            dlib::dlib
+            ${OpenCV_LIBS}
+)
+add_test(NAME test_face_rec COMMAND test_face_rec)
+
+# （可选）主程序
+# add_executable(web_capture web_capture.cpp)
+# target_link_libraries(web_capture
+#     PRIVATE facerec_core
+#             dlib::dlib
+#             ${OpenCV_LIBS}
+# )
+
