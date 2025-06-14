@@ -1,145 +1,125 @@
-#include "ConfigParser.h"
-#include "FaceRecognition.h"
-#include "PerformanceTimer.h"
-
-#include <dlib/image_processing/frontal_face_detector.h>
-#include <dlib/image_transforms.h>
-#include <dlib/image_io.h>
 #include <opencv2/opencv.hpp>
-#include <nadjieb/mjpeg_streamer.hpp>
-
+#include <dlib/opencv.h>
+#include <dlib/image_processing/frontal_face_detector.h>
+#include <dlib/image_processing.h> // for extract_image_chip, get_face_chip_details
+// #include <dlib/image_processing/render_face_detections.h> // 移除此行，因为它可能引入GUI依赖
+#include <dlib/dnn.h>
+#include <dlib/clustering.h>
+#include <dlib/string.h>
+#include <dlib/console_progress_indicator.h>
 #include <iostream>
 #include <vector>
 #include <string>
-#include <memory>
-#include <csignal>
+#include <fstream>
+#include <filesystem> // C++17 filesystem，用于遍历人脸库目录
 
-// 使用dlib的图像类型，避免和OpenCV的混淆
-using dlib::cv_image;
-using dlib::rgb_pixel;
-using MJPEGStreamer = nadjieb::MJPEGStreamer;
+// 项目自定义头文件
+#include "ConfigParser.h"    // 位于 include/
+#include "FaceRecognition.hpp" // 位于 include/
 
-// 全局变量用于信号处理
-volatile sig_atomic_t g_signal_status = 0;
+// MJPEG Streamer 的头文件路径
+#include <nadjieb/mjpeg_streamer.hpp> // 确保这个路径和文件存在
 
-void signal_handler(int signal) {
-    g_signal_status = signal;
-}
-
+namespace fs = std::filesystem; // 使用 std::filesystem 命名空间
 
 int main() {
-    // 注册信号处理器，用于优雅地退出并打印性能报告
-    std::signal(SIGINT, signal_handler); // Ctrl+C
-
-    // 1. 初始化模块
-    auto& timer = TimerManager::getInstance();
-    ConfigParser config;
-    if (!config.load("./config/config.json")) {
-        return -1;
+    // --- 初始化 ConfigParser ---
+    ConfigParser config; // 默认构造
+    // 尝试加载配置文件
+    if (!config.load("config/config.json")) { // 调用 load 方法
+        std::cerr << "错误: 无法加载配置文件 config/config.json" << std::endl;
+        return 1;
     }
-    
-    std::unique_ptr<FaceRecognition> face_rec;
+    config.printAll(); // 打印所有配置，方便调试
+
+    // --- 初始化 FaceRecognition 对象 ---
+    // 将已加载的 config 对象传递给 FaceRecognition 构造函数
+    FaceRecognition face_recognizer(config);
+
     try {
-        face_rec = std::make_unique<FaceRecognition>(config);
+        // 根据您提供的 FaceRecognition.hpp，模型和人脸库的加载应该发生在
+        // FaceRecognition 的构造函数内部（通过调用其私有方法 loadModels 和 buildFaceLibrary）。
+        // 因此，这里不再需要显式调用 loadModels 或 loadFaceDatabase。
+        //
+        // 但是，FaceRecognition.hpp 中没有公共方法来获取人脸库大小、阈值等，
+        // 只有 printFaceLibInfo()。
+        face_recognizer.printFaceLibInfo(); // 打印人脸库信息，用于确认加载状态
+
     } catch (const std::exception& e) {
-        std::cerr << "Failed to initialize FaceRecognition: " << e.what() << std::endl;
-        return -1;
-    }
-    face_rec->printFaceLibInfo();
-
-    // 2. 配置视频源
-    cv::VideoCapture cap;
-    if (config.get<bool>("use_camera", true)) {
-        cap.open(0);
-    } else {
-        cap.open(config.get<std::string>("video_path", ""));
+        std::cerr << "人脸识别初始化失败: " << e.what() << std::endl;
+        return 1;
     }
 
+    cv::VideoCapture cap(0); // 打开默认摄像头
     if (!cap.isOpened()) {
-        std::cerr << "Error: Cannot open video source." << std::endl;
+        std::cerr << "无法打开摄像头" << std::endl;
         return -1;
     }
 
-    // 3. 初始化dlib人脸检测器和对齐器
+    // 初始化 MJPEG Streamer
+    // 使用完整命名空间 nadjieb::mjpeg_streamer::mjpeg_streamer
+    nadjieb::MJPEGStreamer streamer;
+    streamer.start(8080); // 在 8080 端口启动流
+
+    // Dlib 人脸检测器 (通常 FaceRecognition 内部会有一个，但这里为简化流程，可以独立声明)
     dlib::frontal_face_detector detector = dlib::get_frontal_face_detector();
-    dlib::shape_predictor sp = face_rec->getShapePredictor();
 
-    // 4. 初始化MJPEG推流服务
-    MJPEGStreamer streamer;
-    streamer.start(8080);
-    std::cout << "\nMJPEG Streamer started on port 8080." << std::endl;
-    std::cout << "Open http://localhost:8080 in your browser." << std::endl;
-    
-    // 获取配置
-    int frame_interval = config.get<int>("frame_sample_interval", 1);
-    int frame_count = 0;
-
-    // 注册退出时打印性能报告
-    std::atexit([](){ TimerManager::getInstance().printAllSummaries(); });
-
-    // 5. 主循环
-    while (streamer.isAlive() && g_signal_status == 0) {
-        timer.start("Frame Total");
-        
-        cv::Mat temp;
-        timer.start("Frame Capture");
-        if (!cap.read(temp)) {
-            std::cout << "Video ended or failed to capture frame." << std::endl;
+    cv::Mat frame;
+    while (true) {
+        cap >> frame;
+        if (frame.empty()) {
             break;
         }
-        timer.end("Frame Capture");
 
-        // 转换为dlib格式
-        cv_image<rgb_pixel> img(temp);
+        dlib::cv_image<dlib::bgr_pixel> dlib_img(frame);
 
-        // 每隔N帧检测一次，以提高性能
-        if (frame_count % frame_interval == 0) {
-            timer.start("Face Detection");
-            std::vector<dlib::rectangle> dets = detector(img);
-            timer.end("Face Detection");
+        // 检测人脸
+        std::vector<dlib::rectangle> faces = detector(dlib_img);
 
-            // 存储检测结果，在每一帧都绘制
-            std::vector<std::pair<dlib::rectangle, std::string>> face_results;
-            
-            for (auto&& d : dets) {
-                timer.start("Face Alignment");
-                auto shape = sp(img, d);
-                dlib::matrix<rgb_pixel> face_chip;
-                dlib::extract_image_chip(img, dlib::get_face_chip_details(shape, 150, 0.25), face_chip);
-                timer.end("Face Alignment");
-                
-                timer.start("Face Recognition");
-                std::string name = face_rec->recognize(face_chip);
-                timer.end("Face Recognition");
-                
-                face_results.push_back({d, name});
-            }
+        // 处理每个检测到的人脸
+        for (const auto& face_rect : faces) {
+            // --- 校正后识别出人脸 ---
+            // 在发送给识别前，提取并对齐人脸芯片
+            // 使用 FaceRecognition 对象获取形状预测器
+            dlib::full_object_detection shape = face_recognizer.getShapePredictor()(dlib_img, face_rect);
+            dlib::matrix<dlib::rgb_pixel> face_chip;
+            dlib::extract_image_chip(dlib_img, dlib::get_face_chip_details(shape, 150, 0.25), face_chip);
 
-            // 绘制矩形和姓名
-            for (const auto& res : face_results) {
-                 cv::Rect r(res.first.left(), res.first.top(), res.first.width(), res.first.height());
-                 cv::Scalar color = (res.second == "Stranger") ? cv::Scalar(0, 0, 255) : cv::Scalar(0, 255, 0);
-                 cv::rectangle(temp, r, color, 2);
+            // 调用 FaceRecognition 的 recognize 方法
+            std::string recognized_name = face_recognizer.recognize(face_chip);
 
-                 cv::Point text_pos(r.x, r.y - 10 > 0 ? r.y - 10 : r.y + 10);
-                 cv::putText(temp, res.second, text_pos, cv::FONT_HERSHEY_SIMPLEX, 0.8, color, 2);
-            }
+            // --- 在图像上绘制人脸信息 ---
+            cv::Scalar color = (recognized_name == "Stranger") ? cv::Scalar(0, 0, 255) : cv::Scalar(0, 255, 0); // 陌生人红色，已知人脸绿色
+            int baseline = 0;
+            cv::Size textSize = cv::getTextSize(recognized_name, cv::FONT_HERSHEY_SIMPLEX, 0.9, 2, &baseline);
+            // 显式转换为 int
+            cv::Point textOrg(static_cast<int>(face_rect.tl_corner().x()), static_cast<int>(face_rect.tl_corner().y()) - 10);
+
+            // 绘制背景矩形以提高文本可读性
+            cv::rectangle(frame, textOrg + cv::Point(0, baseline), textOrg + cv::Point(textSize.width, -textSize.height), color, cv::FILLED);
+            cv::putText(frame, recognized_name, textOrg, cv::FONT_HERSHEY_SIMPLEX, 0.9, cv::Scalar(255, 255, 255), 2);
+
+            // --- 最后绘制人脸矩形，以免干扰识别输入 ---
+            // 显式转换为 int
+            cv::rectangle(frame, cv::Point(static_cast<int>(face_rect.tl_corner().x()), static_cast<int>(face_rect.tl_corner().y())),
+                          cv::Point(static_cast<int>(face_rect.br_corner().x()), static_cast<int>(face_rect.br_corner().y())), color, 2);
         }
-        
-        frame_count++;
-        
-        timer.start("MJPEG Streaming");
-        std::vector<uchar> buff_bgr;
-        cv::imencode(".jpg", temp, buff_bgr);
-        streamer.publish("/bgr", std::string(buff_bgr.begin(), buff_bgr.end()));
-        timer.end("MJPEG Streaming");
 
-        timer.end("Frame Total");
+        // 将处理后的帧发布到 MJPEG Streamer
+        std::vector<uchar> buffer;
+        cv::imencode(".jpg", frame, buffer, {cv::IMWRITE_JPEG_QUALITY, 80});
+        streamer.publish("/webcam", std::string(buffer.begin(), buffer.end()));
+
+        // （可选）在本地显示
+        // cv::imshow("Webcam Stream", frame);
+        // if (cv::waitKey(1) == 27) { // 按 ESC 退出
+        //     break;
+        // }
     }
 
     streamer.stop();
-    std::cout << "Streamer stopped. Exiting." << std::endl;
-    // atexit 会在这里被调用，打印性能报告
+    cap.release();
+    cv::destroyAllWindows();
 
     return 0;
 }

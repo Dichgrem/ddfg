@@ -116,4 +116,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/facerec_core.dir/DependInfo.cmake"
   "CMakeFiles/test_config.dir/DependInfo.cmake"
   "CMakeFiles/test_face_rec.dir/DependInfo.cmake"
+  "CMakeFiles/web_capture.dir/DependInfo.cmake"
   )

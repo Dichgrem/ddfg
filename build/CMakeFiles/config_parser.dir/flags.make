@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dich/ddfg/include
+CXX_INCLUDES = -I/home/dich/ddfg/include -I/home/dich/ddfg/extern/mjpeg-streamer/include
 
 CXX_FLAGS = -std=gnu++17
 

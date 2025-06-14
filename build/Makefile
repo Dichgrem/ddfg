@@ -178,6 +178,19 @@ test_face_rec/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/build
 .PHONY : test_face_rec/fast
 
+#=============================================================================
+# Target rules for targets named web_capture
+
+# Build rule for target.
+web_capture: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 web_capture
+.PHONY : web_capture
+
+# fast build rule for target.
+web_capture/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/build
+.PHONY : web_capture/fast
+
 src/ConfigParser.o: src/ConfigParser.cpp.o
 .PHONY : src/ConfigParser.o
 
@@ -301,6 +314,30 @@ test/test_face_rec.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/test/test_face_rec.cpp.s
 .PHONY : test/test_face_rec.cpp.s
 
+web_capture.o: web_capture.cpp.o
+.PHONY : web_capture.o
+
+# target to build an object file
+web_capture.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/web_capture.cpp.o
+.PHONY : web_capture.cpp.o
+
+web_capture.i: web_capture.cpp.i
+.PHONY : web_capture.i
+
+# target to preprocess a source file
+web_capture.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/web_capture.cpp.i
+.PHONY : web_capture.cpp.i
+
+web_capture.s: web_capture.cpp.s
+.PHONY : web_capture.s
+
+# target to generate assembly for a file
+web_capture.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/web_capture.cpp.s
+.PHONY : web_capture.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -314,6 +351,7 @@ help:
 	@echo "... facerec_core"
 	@echo "... test_config"
 	@echo "... test_face_rec"
+	@echo "... web_capture"
 	@echo "... src/ConfigParser.o"
 	@echo "... src/ConfigParser.i"
 	@echo "... src/ConfigParser.s"
@@ -329,6 +367,9 @@ help:
 	@echo "... test/test_face_rec.o"
 	@echo "... test/test_face_rec.i"
 	@echo "... test/test_face_rec.s"
+	@echo "... web_capture.o"
+	@echo "... web_capture.i"
+	@echo "... web_capture.s"
 .PHONY : help
 
 
