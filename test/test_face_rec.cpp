@@ -1,5 +1,5 @@
 #include "ConfigParser.h"
-#include "FaceRecognition.h"
+#include "FaceRecognition.hpp"
 #include <iostream>
 #include <dlib/image_io.h>
 #include <dlib/image_processing/frontal_face_detector.h>

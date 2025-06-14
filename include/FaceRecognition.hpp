@@ -1,91 +1,78 @@
-#ifndef FACERECOGNITION_HPP
-#define FACERECOGNITION_HPP
+#ifndef FACE_RECOGNITION_HPP
+#define FACE_RECOGNITION_HPP
 
-#include "ConfigParser.h"
-
+#include <dlib/dnn.h>
 #include <dlib/image_processing/frontal_face_detector.h>
 #include <dlib/image_processing.h>
-#include <dlib/dnn.h>
-#include <dlib/image_io.h>
-
-#include <filesystem>
-#include <map>
 #include <string>
-#include <vector>
+#include <unordered_map>
 
-namespace dr = dlib;
+// 前向声明
+class ConfigParser;
 
-/// 与 dnn_face_recognition_ex.cpp 中定义相同的网络类型
-template <template<int,template<class>class,int,typename> class BLOCK,
-          int N, template<class>class BN, int stride, typename SUBNET>
-using residual = dr::add_prev1<BLOCK<N,BN,stride,dr::tag1<SUBNET>>>;
+// 使用 dlib 的标准人脸识别网络定义
+// 这是 dlib 官方推荐的人脸识别网络结构
+template <template <int,template<typename>class,int,typename> class block, int N, template<typename>class BN, typename SUBNET>
+using residual = dlib::add_prev1<block<N,BN,1,dlib::tag1<SUBNET>>>;
 
-template <template<int,template<class>class,int,typename> class BLOCK,
-          int N, template<class>class BN, int stride, typename SUBNET>
-using residual_down =
-    dr::add_prev2<
-      dr::avg_pool<2,2,2,2,
-        dr::skip1<BLOCK<N,BN,stride,dr::tag1<SUBNET>>>
-      >
-    >;
+template <template <int,template<typename>class,int,typename> class block, int N, template<typename>class BN, typename SUBNET>
+using residual_down = dlib::add_prev2<dlib::avg_pool<2,2,2,2,dlib::skip1<dlib::tag2<block<N,BN,2,dlib::tag1<SUBNET>>>>>>;
 
-template <int N, template<class>class BN, int stride, typename SUBNET>
-using block  = BN<
-                   dr::con<N,3,3,1,1,
-                     dr::relu<
-                       BN<dr::con<N,3,3,stride,stride,SUBNET>>
-                     >
-                   >
-                 >;
+template <int N, template <typename> class BN, int stride, typename SUBNET> 
+using block  = BN<dlib::con<N,3,3,1,1,dlib::relu<BN<dlib::con<N,3,3,stride,stride,SUBNET>>>>>;
 
-template <int N, typename SUBNET>
-using res      = dr::relu< residual<block,N,dr::bn_con,1,SUBNET> >;
+template <int N, typename SUBNET> using ares      = dlib::relu<residual<block,N,dlib::affine,SUBNET>>;
+template <int N, typename SUBNET> using ares_down = dlib::relu<residual_down<block,N,dlib::affine,SUBNET>>;
 
-template <int N, typename SUBNET>
-using res_down = dr::relu< residual_down<block,N,dr::bn_con,2,SUBNET> >;
+template <typename SUBNET> using alevel0 = ares_down<256,SUBNET>;
+template <typename SUBNET> using alevel1 = ares<256,ares<256,ares_down<256,SUBNET>>>;
+template <typename SUBNET> using alevel2 = ares<128,ares<128,ares_down<128,SUBNET>>>;
+template <typename SUBNET> using alevel3 = ares<64,ares<64,ares<64,ares_down<64,SUBNET>>>>;
+template <typename SUBNET> using alevel4 = ares<32,ares<32,ares<32,SUBNET>>>;
 
-/// 最终网络：150×150 输入 -> 128d 向量
-using anet_type = dr::loss_metric<
-                     dr::fc_no_bias<128,
-                     dr::avg_pool_everything<
-                       res<256,
-                       res<256,
-                       res_down<256,
-                       res<128,
-                       res<128,
-                       res_down<128,
-                       res<64,
-                       res<64,
-                       res<64,
-                       res_down<64,
-                       res<32,
-                       dr::input_rgb_image_sized<150>
-                       >>>>>>>>>>>>>>;
+// 定义人脸识别网络
+using anet_type = dlib::loss_metric<dlib::fc_no_bias<128,dlib::avg_pool_everything<
+                            alevel0<
+                            alevel1<
+                            alevel2<
+                            alevel3<
+                            alevel4<
+                            dlib::max_pool<3,3,2,2,dlib::relu<dlib::affine<dlib::con<32,7,7,2,2,
+                            dlib::input_rgb_image_sized<150>
+                            >>>>>>>>>>>>;
 
-class FaceRecognition {
+class FaceRecognition
+{
 public:
-    /// 构造：加载配置、模型，并根据配置加载人脸库
     explicit FaceRecognition(const ConfigParser& config);
-
-    /// 识别已对齐的 150×150 人脸图，返回姓名或 "Stranger"
-    std::string recognize(const dr::matrix<dr::rgb_pixel>& face_chip);
-
-    /// 打印当前人脸库信息（条目数、阈值）
+    
+    // 识别人脸
+    std::string recognize(const dlib::matrix<dlib::rgb_pixel>& face_chip);
+    
+    // 获取形状预测器
+    dlib::shape_predictor getShapePredictor() const;
+    
+    // 打印人脸库信息
     void printFaceLibInfo() const;
 
-    /// 获取内部 shape_predictor（用于外部提取人脸关键点）
-    dr::shape_predictor getShapePredictor() const;
-
 private:
+    // 加载模型
     void loadModels(const ConfigParser& config);
+    
+    // 从CSV加载人脸库
     void loadLibraryFromCSV(const std::string& csv_path);
+    
+    // 从目录构建人脸库
     void buildFaceLibrary(const std::string& dir_path);
 
-    dr::shape_predictor                          sp_;
-    anet_type                                    net_;
-    double                                       face_match_threshold_;
-    std::map<std::string, dr::matrix<float,0,1>> face_library_;
+private:
+    anet_type net_;                           // 人脸识别网络
+    dlib::shape_predictor sp_;                // 形状预测器
+    double face_match_threshold_;             // 人脸匹配阈值
+    
+    // 人脸库：姓名 -> 特征向量
+    std::unordered_map<std::string, dlib::matrix<float,0,1>> face_library_;
 };
 
-#endif // FACERECOGNITION_HPP
+#endif // FACE_RECOGNITION_HPP
 
