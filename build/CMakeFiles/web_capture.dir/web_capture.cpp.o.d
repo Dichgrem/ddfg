@@ -1201,6 +1201,28 @@ CMakeFiles/web_capture.dir/web_capture.cpp.o: \
  /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
  /usr/include/c++/13/bits/fs_path.h /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
+ /usr/include/c++/13/csignal /usr/include/signal.h \
+ /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
+ /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
+ /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
+ /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
+ /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
+ /usr/include/x86_64-linux-gnu/bits/sigaction.h \
+ /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
+ /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
+ /usr/include/x86_64-linux-gnu/sys/ucontext.h \
+ /usr/include/x86_64-linux-gnu/bits/sigstack.h \
+ /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
+ /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
+ /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
+ /usr/include/x86_64-linux-gnu/bits/sigthread.h \
+ /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
  /home/dich/ddfg/include/ConfigParser.h /usr/include/nlohmann/json.hpp \
  /usr/include/nlohmann/adl_serializer.hpp \
  /usr/include/nlohmann/detail/abi_macros.hpp \
@@ -1257,6 +1279,7 @@ CMakeFiles/web_capture.dir/web_capture.cpp.o: \
  /usr/include/nlohmann/detail/macro_unscope.hpp \
  /usr/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
  /home/dich/ddfg/include/FaceRecognition.hpp \
+ /home/dich/ddfg/include/PerformanceMonitor.h \
  /home/dich/ddfg/extern/mjpeg-streamer/include/nadjieb/mjpeg_streamer.hpp \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -1271,28 +1294,7 @@ CMakeFiles/web_capture.dir/web_capture.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/struct_osockaddr.h \
  /usr/include/x86_64-linux-gnu/bits/in.h /usr/include/poll.h \
  /usr/include/x86_64-linux-gnu/sys/poll.h \
- /usr/include/x86_64-linux-gnu/bits/poll.h /usr/include/signal.h \
- /usr/include/x86_64-linux-gnu/bits/signum-generic.h \
- /usr/include/x86_64-linux-gnu/bits/signum-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sig_atomic_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/siginfo_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/__sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-arch.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts.h \
- /usr/include/x86_64-linux-gnu/bits/siginfo-consts-arch.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigval_t.h \
- /usr/include/x86_64-linux-gnu/bits/types/sigevent_t.h \
- /usr/include/x86_64-linux-gnu/bits/sigevent-consts.h \
- /usr/include/x86_64-linux-gnu/bits/sigaction.h \
- /usr/include/x86_64-linux-gnu/bits/sigcontext.h \
- /usr/include/x86_64-linux-gnu/bits/types/stack_t.h \
- /usr/include/x86_64-linux-gnu/sys/ucontext.h \
- /usr/include/x86_64-linux-gnu/bits/sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigstksz.h \
- /usr/include/x86_64-linux-gnu/bits/ss_flags.h \
- /usr/include/x86_64-linux-gnu/bits/types/struct_sigstack.h \
- /usr/include/x86_64-linux-gnu/bits/sigthread.h \
- /usr/include/x86_64-linux-gnu/bits/signal_ext.h \
+ /usr/include/x86_64-linux-gnu/bits/poll.h \
  /usr/include/x86_64-linux-gnu/sys/ioctl.h \
  /usr/include/x86_64-linux-gnu/bits/ioctls.h \
  /usr/include/x86_64-linux-gnu/asm/ioctls.h \

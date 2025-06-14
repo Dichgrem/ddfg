@@ -115,12 +115,12 @@ CMakeFiles/config_parser.dir/clean:
 CMakeFiles/facerec_core.dir/all: CMakeFiles/config_parser.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=3,4,5,6 "Built target facerec_core"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=3,4,5 "Built target facerec_core"
 .PHONY : CMakeFiles/facerec_core.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/facerec_core.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/facerec_core.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 0
 .PHONY : CMakeFiles/facerec_core.dir/rule
@@ -141,7 +141,7 @@ CMakeFiles/facerec_core.dir/clean:
 CMakeFiles/test_config.dir/all: CMakeFiles/config_parser.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_config.dir/build.make CMakeFiles/test_config.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=7,8 "Built target test_config"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=6,7 "Built target test_config"
 .PHONY : CMakeFiles/test_config.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,12 +168,12 @@ CMakeFiles/test_face_rec.dir/all: CMakeFiles/config_parser.dir/all
 CMakeFiles/test_face_rec.dir/all: CMakeFiles/facerec_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_face_rec.dir/build.make CMakeFiles/test_face_rec.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=9,10 "Built target test_face_rec"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=8,9 "Built target test_face_rec"
 .PHONY : CMakeFiles/test_face_rec.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/test_face_rec.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_face_rec.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 0
 .PHONY : CMakeFiles/test_face_rec.dir/rule
@@ -195,12 +195,12 @@ CMakeFiles/web_capture.dir/all: CMakeFiles/config_parser.dir/all
 CMakeFiles/web_capture.dir/all: CMakeFiles/facerec_core.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/web_capture.dir/build.make CMakeFiles/web_capture.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=11,12 "Built target web_capture"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=10,11 "Built target web_capture"
 .PHONY : CMakeFiles/web_capture.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/web_capture.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/web_capture.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/dich/ddfg/build/CMakeFiles 0
 .PHONY : CMakeFiles/web_capture.dir/rule

@@ -69,24 +69,10 @@ include CMakeFiles/facerec_core.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/facerec_core.dir/flags.make
 
-CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o: CMakeFiles/facerec_core.dir/flags.make
-CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o: /home/dich/ddfg/src/ConfigParser.cpp
-CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o: CMakeFiles/facerec_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o -MF CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o.d -o CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o -c /home/dich/ddfg/src/ConfigParser.cpp
-
-CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/src/ConfigParser.cpp > CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.i
-
-CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/src/ConfigParser.cpp -o CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.s
-
 CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o: CMakeFiles/facerec_core.dir/flags.make
 CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o: /home/dich/ddfg/src/FaceRecognition.cpp
 CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o: CMakeFiles/facerec_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o -MF CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o.d -o CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o -c /home/dich/ddfg/src/FaceRecognition.cpp
 
 CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.i: cmake_force
@@ -97,35 +83,33 @@ CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/src/FaceRecognition.cpp -o CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.s
 
-CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o: CMakeFiles/facerec_core.dir/flags.make
-CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o: /home/dich/ddfg/src/PerformanceTimer.cpp
-CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o: CMakeFiles/facerec_core.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o -MF CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o.d -o CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o -c /home/dich/ddfg/src/PerformanceTimer.cpp
+CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o: CMakeFiles/facerec_core.dir/flags.make
+CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o: /home/dich/ddfg/src/PerformanceMonitor.cpp
+CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o: CMakeFiles/facerec_core.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o -MF CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o.d -o CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o -c /home/dich/ddfg/src/PerformanceMonitor.cpp
 
-CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/src/PerformanceTimer.cpp > CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.i
+CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/dich/ddfg/src/PerformanceMonitor.cpp > CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.i
 
-CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/src/PerformanceTimer.cpp -o CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.s
+CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/dich/ddfg/src/PerformanceMonitor.cpp -o CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.s
 
 # Object files for target facerec_core
 facerec_core_OBJECTS = \
-"CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o" \
 "CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o" \
-"CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o"
+"CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o"
 
 # External object files for target facerec_core
 facerec_core_EXTERNAL_OBJECTS =
 
-libfacerec_core.a: CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o
 libfacerec_core.a: CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o
-libfacerec_core.a: CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o
+libfacerec_core.a: CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o
 libfacerec_core.a: CMakeFiles/facerec_core.dir/build.make
 libfacerec_core.a: CMakeFiles/facerec_core.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX static library libfacerec_core.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/dich/ddfg/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libfacerec_core.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/facerec_core.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/facerec_core.dir/link.txt --verbose=$(VERBOSE)
 

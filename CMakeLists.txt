@@ -41,21 +41,22 @@ endif()
 
 # 常规模式：查找外部依赖
 find_package(OpenCV REQUIRED)
-find_package(dlib   REQUIRED)
+find_package(dlib REQUIRED)
 
 # 核心库：facerec_core
+# 移除 src/ConfigParser.cpp，因为它已经在 config_parser 库中编译了
 add_library(facerec_core STATIC
-    src/ConfigParser.cpp
     src/FaceRecognition.cpp
-    src/PerformanceTimer.cpp
+    src/PerformanceMonitor.cpp
 )
 target_include_directories(facerec_core PUBLIC
     ${PROJECT_SOURCE_DIR}/include
 )
 target_link_libraries(facerec_core
-    PUBLIC config_parser
-           dlib::dlib
-           ${OpenCV_LIBS}
+    PUBLIC
+        config_parser # facerec_core 依赖于 config_parser，通过 PUBLIC 传递依赖
+        dlib::dlib
+        ${OpenCV_LIBS}
 )
 
 # 测试1：test_config.cpp
@@ -72,19 +73,21 @@ add_executable(test_face_rec
     test/test_face_rec.cpp
 )
 target_link_libraries(test_face_rec
-    PRIVATE facerec_core
-            dlib::dlib
-            ${OpenCV_LIBS}
+    PRIVATE
+        facerec_core
+        dlib::dlib # 虽然 facerec_core 已经链接了 dlib，但这里再次明确链接通常是安全的，以防万一
+        ${OpenCV_LIBS} # 同上，再次明确链接 OpenCV 库
 )
 add_test(NAME test_face_rec COMMAND test_face_rec)
 
 # 主程序 web_capture
 add_executable(web_capture web_capture.cpp)
 target_link_libraries(web_capture
-     PRIVATE facerec_core
-             dlib::dlib
-             ${OpenCV_LIBS}
-             # mjpeg-streamer 是纯头文件库，不需要在这里链接
+    PRIVATE
+        facerec_core
+        dlib::dlib # 同上，明确链接
+        ${OpenCV_LIBS} # 同上，明确链接
+        # mjpeg-streamer 是纯头文件库，不需要在这里链接
 )
 
 # --- 模型和配置文件的复制 (可选但推荐) ---

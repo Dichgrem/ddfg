@@ -8,9 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/dich/ddfg/src/ConfigParser.cpp" "CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o" "gcc" "CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o.d"
   "/home/dich/ddfg/src/FaceRecognition.cpp" "CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o" "gcc" "CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.o.d"
-  "/home/dich/ddfg/src/PerformanceTimer.cpp" "CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o" "gcc" "CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o.d"
+  "/home/dich/ddfg/src/PerformanceMonitor.cpp" "CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o" "gcc" "CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

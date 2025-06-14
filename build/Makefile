@@ -197,7 +197,6 @@ src/ConfigParser.o: src/ConfigParser.cpp.o
 # target to build an object file
 src/ConfigParser.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/config_parser.dir/build.make CMakeFiles/config_parser.dir/src/ConfigParser.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.o
 .PHONY : src/ConfigParser.cpp.o
 
 src/ConfigParser.i: src/ConfigParser.cpp.i
@@ -206,7 +205,6 @@ src/ConfigParser.i: src/ConfigParser.cpp.i
 # target to preprocess a source file
 src/ConfigParser.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/config_parser.dir/build.make CMakeFiles/config_parser.dir/src/ConfigParser.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.i
 .PHONY : src/ConfigParser.cpp.i
 
 src/ConfigParser.s: src/ConfigParser.cpp.s
@@ -215,7 +213,6 @@ src/ConfigParser.s: src/ConfigParser.cpp.s
 # target to generate assembly for a file
 src/ConfigParser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/config_parser.dir/build.make CMakeFiles/config_parser.dir/src/ConfigParser.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/ConfigParser.cpp.s
 .PHONY : src/ConfigParser.cpp.s
 
 src/FaceRecognition.o: src/FaceRecognition.cpp.o
@@ -242,29 +239,29 @@ src/FaceRecognition.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/FaceRecognition.cpp.s
 .PHONY : src/FaceRecognition.cpp.s
 
-src/PerformanceTimer.o: src/PerformanceTimer.cpp.o
-.PHONY : src/PerformanceTimer.o
+src/PerformanceMonitor.o: src/PerformanceMonitor.cpp.o
+.PHONY : src/PerformanceMonitor.o
 
 # target to build an object file
-src/PerformanceTimer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.o
-.PHONY : src/PerformanceTimer.cpp.o
+src/PerformanceMonitor.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.o
+.PHONY : src/PerformanceMonitor.cpp.o
 
-src/PerformanceTimer.i: src/PerformanceTimer.cpp.i
-.PHONY : src/PerformanceTimer.i
+src/PerformanceMonitor.i: src/PerformanceMonitor.cpp.i
+.PHONY : src/PerformanceMonitor.i
 
 # target to preprocess a source file
-src/PerformanceTimer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.i
-.PHONY : src/PerformanceTimer.cpp.i
+src/PerformanceMonitor.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.i
+.PHONY : src/PerformanceMonitor.cpp.i
 
-src/PerformanceTimer.s: src/PerformanceTimer.cpp.s
-.PHONY : src/PerformanceTimer.s
+src/PerformanceMonitor.s: src/PerformanceMonitor.cpp.s
+.PHONY : src/PerformanceMonitor.s
 
 # target to generate assembly for a file
-src/PerformanceTimer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceTimer.cpp.s
-.PHONY : src/PerformanceTimer.cpp.s
+src/PerformanceMonitor.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/facerec_core.dir/build.make CMakeFiles/facerec_core.dir/src/PerformanceMonitor.cpp.s
+.PHONY : src/PerformanceMonitor.cpp.s
 
 test/test_config.o: test/test_config.cpp.o
 .PHONY : test/test_config.o
@@ -358,9 +355,9 @@ help:
 	@echo "... src/FaceRecognition.o"
 	@echo "... src/FaceRecognition.i"
 	@echo "... src/FaceRecognition.s"
-	@echo "... src/PerformanceTimer.o"
-	@echo "... src/PerformanceTimer.i"
-	@echo "... src/PerformanceTimer.s"
+	@echo "... src/PerformanceMonitor.o"
+	@echo "... src/PerformanceMonitor.i"
+	@echo "... src/PerformanceMonitor.s"
 	@echo "... test/test_config.o"
 	@echo "... test/test_config.i"
 	@echo "... test/test_config.s"
